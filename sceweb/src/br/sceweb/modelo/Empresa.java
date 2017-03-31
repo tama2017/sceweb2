@@ -1,6 +1,5 @@
 package br.sceweb.modelo;
 
-
 import java.util.InputMismatchException;
 /**
  * mantem as informações das empresas cadastras para oferecer convenio
@@ -29,8 +28,60 @@ public class Empresa {
 		}
 		else
 			throw new IllegalArgumentException("CNPJ inválido!");
-	
 	}
+	
+	public String getNomeDaEmpresa() {
+		return nomeDaEmpresa;
+	}
+	public void setNomeDaEmpresa(String nomeDaEmpresa) {
+		if (nomeDaEmpresa.equals("")){
+			this.nomeDaEmpresa = nomeDaEmpresa;
+			throw new IllegalArgumentException("nome da empresa inválido!");
+		}
+		else
+			this.nomeDaEmpresa = nomeDaEmpresa;
+		
+	}
+	public String getNomeFantasia() {
+		return nomeFantasia;
+	}
+	public void setNomeFantasia(String nomeFantasia) {
+		if (nomeFantasia.equals("")){
+			this.nomeFantasia = nomeFantasia;
+			throw new IllegalArgumentException("nome fantasia inválido!");
+		}
+		else
+			this.nomeFantasia = nomeFantasia;
+		
+	}
+	
+	public String getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(String endereco) {
+		if (endereco.equals("")){
+			this.endereco = endereco;
+			throw new IllegalArgumentException("endereco invalido");
+		}
+		else
+			this.endereco = endereco;
+		
+	}
+
+	
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		if (telefone.equals("")){
+			this.telefone = telefone;
+			throw new IllegalArgumentException("telefone invalido");
+		}
+		else
+			this.telefone = telefone;
+		
+	}
+	
 	/*
 	 * valida o cnpj
 	 */
@@ -89,38 +140,6 @@ public class Empresa {
 	        return(false);
 	    }
 	}
-	public String getNomeDaEmpresa() {
-		return nomeDaEmpresa;
-	}
-	public void setNomeDaEmpresa(String nomeDaEmpresa) {
-		if (nomeDaEmpresa.equals("")){
-			this.nomeDaEmpresa = nomeDaEmpresa;
-			throw new IllegalArgumentException("nome da empresa inválido!");
-		}
-		else
-			this.nomeDaEmpresa = nomeDaEmpresa;
-		
-	}
-	public String getNomeFantasia() {
-		return nomeFantasia;
-	}
-	public void setNomeFantasia(String nomeFantasia) {
-		this.nomeFantasia = nomeFantasia;
-	}
-	public String getEndereco() {
-		return endereco;
-	}
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
-	public String getTelefone() {
-		return telefone;
-	}
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-	
-	
 	
 	
 	@Override
