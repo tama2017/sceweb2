@@ -24,7 +24,7 @@ public class UC01CadastrarEmpresaGUI {
 	public void setUp() throws Exception {
 
 		System.setProperty("webdriver.gecko.driver",
-				"C://Users/esadv6/git/repositorio7/sceweb/WebContent/WEB-INF/lib/geckodriver.exe");
+				"C:/Users/Lab103/git/20171S_fatec2/sceweb/WebContent/WEB-INF/lib/geckodriver.exe");
 		driver = new FirefoxDriver();
 		baseUrl = "http://localhost:8080/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);

@@ -71,7 +71,35 @@ public class ServletControle extends HttpServlet {
 
 			}
 		}
-
+		if (parametro.equals("ConsultarEmpresa")) {
+			url = "/visao/FormEmpresa.jsp";
+			Empresa empresa = new Empresa();
+			String cnpj = request.getParameter("txtCNPJ");
+			logger.info("consulta empresa  = " + cnpj);
+			try {
+				if (!cnpj.isEmpty()) {
+					empresa = consulta(cnpj);
+					if (empresa != null){
+						logger.info("consulta empresa nome da empresa  = " + empresa.getNomeDaEmpresa());
+						request.setAttribute("nomeDaEmpresa", empresa.getNomeDaEmpresa());
+					    request.setAttribute("cnpj", empresa.getCnpj());
+					    request.setAttribute("nomeFantasia", empresa.getNomeFantasia());
+					    request.setAttribute("endereco", empresa.getEndereco());
+					    request.setAttribute("telefone", empresa.getTelefone());
+					    request.setAttribute("msg", "");
+						url = "/visao/FormEmpresaResultadoDaConsulta.jsp";
+					} else {
+						request.setAttribute("msg", "cnpj invalido");
+					}
+				} else {
+					request.setAttribute("msg", "cnpj invalido");
+				}
+			} catch (Exception e) {
+				logger.info(e.getMessage() + e.getCause());
+			}
+			request.getRequestDispatcher(url).forward(request, response);
+			
+		}
 
 	}
 
@@ -96,7 +124,11 @@ public class ServletControle extends HttpServlet {
 		return msg;
 	}
 
-	
+	public Empresa consulta(String cnpj) {
+		logger.info("consulta empresa 2 = " + cnpj);
+		EmpresaDAO empresaDAO = new EmpresaDAO();
+		return empresaDAO.consultaEmpresa(cnpj);
+	}
 
 	public String excluirEmpresa(String cnpj) {
 		String msg = "";
